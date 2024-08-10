@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.5)
+project(Pizzeria)
+set(CXX_STANDART 11)
+set(CXX_STANDARD_REQUIRED true)
+include_directories(.)
+add_executable(get_pizza main.cpp cli.cpp pizza.cpp)
