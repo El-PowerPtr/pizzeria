@@ -18,22 +18,14 @@ class Pizza
     public:
         std::string name;
         float price;
+
+        Pizza () = default;
+        Pizza (std::string, float);
         std::vector<Ingredient> ingredients; 
         void add(Ingredient);
-        friend std::ostream &operator<< (std::ostream&, const Pizza&);
 };      
 
-class Pizza1 : public Pizza
-{
-    public : Pizza1();
-};
-class Pizza2 : public Pizza
-{
-    public : Pizza2();
-};
-class Pizza3 : public Pizza
-{
-    public : Pizza3();
-};
+const Pizza pizzas[] = {{"Pequeña", 25.0}, {"Mediana", 32.5}, {"Grande", 40.0}, {"Familiar", 60.0}};
+const int pizza_num = 4;
 
 #endif

@@ -1,7 +1,7 @@
 #include "cli.h"
-#include <clocale>
+#include <locale>
 int main()
 {
-    setlocale(LC_ALL, "spanish");
+    Cli::centered_print("PIZZERÍA PENESOTE", 68,"->","<-");
     Cli::main_menu();
 }

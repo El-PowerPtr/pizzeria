@@ -1,5 +1,6 @@
 #ifndef CLI
 #define CLI
+
 #include <iostream>
 #include "pizza.h"
 #include <cstdlib>
@@ -7,9 +8,11 @@
 
 namespace Cli
 {
+    void centered_print(std::string, int, std::string);
+    void centered_print(std::string, int, std::string, std::string);
     float start();
     void main_menu();
-    void order(std::vector<Pizza>&,float&, float&);
-    void end(std::vector<Pizza>&,float&, float&);
+    Pizza order(float&, float&);
+    void end(Pizza&, float&, float&);
 }
 #endif
