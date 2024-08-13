@@ -5,11 +5,11 @@
 #include <iostream>
 #include <array>
 
-typedef struct
+struct Ingredient
 {
     std::string name;
     float price;
-}Ingredient;
+};
 
 const Ingredient ingredient_table[] = {{"Piña",3.7} , {"Jamón", 10.0}, {"Cebolla",8.1}};
 constexpr size_t ingred_num = std::size(ingredient_table);
