@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <array>
 
 typedef struct
 {
@@ -11,7 +12,7 @@ typedef struct
 }Ingredient;
 
 const Ingredient ingredient_table[] = {{"Piña",3.7} , {"Jamón", 10.0}, {"Cebolla",8.1}};
-const int ingred_num = 3;
+constexpr size_t ingred_num = std::size(ingredient_table);
 
 class Pizza
 {
@@ -26,6 +27,6 @@ class Pizza
 };      
 
 const Pizza pizzas[] = {{"Pequeña", 25.0}, {"Mediana", 32.5}, {"Grande", 40.0}, {"Familiar", 60.0}};
-const int pizza_num = 4;
+const size_t pizza_num = std::size(pizzas);
 
 #endif

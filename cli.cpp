@@ -80,7 +80,10 @@ namespace Cli
             {
                 case 1:
                     pizza = order(used, credit);
-                    if (used - credit >= 0.01){
+                    if(used - credit <= 0.01)
+                        add_ingredients(pizza, used, credit);
+                    if (used - credit >= 0.01)
+                    {
                         std::cout << " Crédito disponible insuficiente, reformule su pedido"<<std::endl;
                         used = 0;
                     }
@@ -116,14 +119,15 @@ namespace Cli
     Pizza order(float& used, float& credit)
     {
         int pizza_choice = 0;
-        int ingredient_choice;
         Pizza pizza;
         do
         {
             std::cout << "Qué tipo de pizza desea?"<<std::endl;
             for (int i = 0; i < pizza_num; i++)
-                std::cout << i + 1 << " - " << "Pizza " << pizzas[i].name << std::right << std::setw(18 - pizzas[i].name.length()) 
+                std::cout << i + 1 << " - " << "Pizza " << pizzas[i].name << std::right << std::setw(38 - pizzas[i].name.length()) 
                     << std::setprecision(1) << std::fixed << pizzas[i].price << "$" << std::endl;
+            std::cout << "Importe/Crédito:" << std::setw(25) << used << "/" <<credit <<std::endl << std::setw(0);
+
             std::cin >> pizza_choice;
             std::fflush(stdin);
             
@@ -139,26 +143,27 @@ namespace Cli
             }
         }while(!pizza_choice);
 
-         if (used - credit > 0.01)
-            return pizza;
+        return pizza;
+    }
 
+    void add_ingredients(Pizza& pizza, float& used, float& credit)
+    {
+        int ingredient_choice;
         do
         {
-            Ingredient ingredient;
-
             std::cout << "Qué ingrediente desea añadir a su pizza?"<<std::endl;
             for (int i = 0; i < ingred_num; i++)
                 std::cout << i + 1 << " - " << ingredient_table[i].name << std::setw(42 - ingredient_table[i].name.length()) 
                     << std::setprecision(1) << std::fixed << ingredient_table[i].price << "$" << std::endl;
             std::cout << "Si no desea añadir un nuevo ingrediente, introduzca 0" << std::endl;
-            std::cout << "Importe/Crédito:" << std::setw(25) <<used<<"/"<<credit <<std::endl << std::setw(0);
+            std::cout << "Importe/Crédito:" << std::setw(25) << used << "/" <<credit <<std::endl << std::setw(0);
 
             std::cin >> ingredient_choice;
             std::fflush(stdin); 
 
             if(ingredient_choice >= 1 && ingredient_choice <= ingred_num)
             {
-                used += ingredient.price;
+
                 if (used - credit > 0.01)
                 {
                     std::cout << "Crédito insuficiente, reformule su pedido" << std::endl;
@@ -181,11 +186,8 @@ namespace Cli
                 std::cout << "Introduce un numero valido" << std::endl;
             }
         }while(true);
-
-        return pizza;
     }
 
-              
     void end(Pizza& pizza,float& used, float& credit)
     {
         
