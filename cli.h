@@ -8,9 +8,10 @@
 
 namespace Cli
 {
+    void append_fill(std::string&, int, int, std::string);
     void centered_print(std::string, int, std::string);
     void centered_print(std::string, int, std::string, std::string);
-    float start();
+    float setprice();
     void main_menu();
     Pizza order(float&, float&);
     void end(Pizza&, float&, float&);

@@ -2,22 +2,22 @@
 
 namespace Cli
 {
+    void append_fill(std::string& builder, int width,int length, std::string fill)
+    {
+        for (int i = 0; i < (width - length) / 2;)
+        {
+            builder.append(fill);
+            i += fill.length();
+        }
+    }
+
     void centered_print(std::string text, int width, std::string fill = " ")
     {
         std::string builder;
-        for (int i = 0; i < (width - text.length()) / 2;)
-        {
-            builder.append(fill);
-            i += fill.length();
-        }
 
+        append_fill(builder, width, text.length(), fill);
         builder.append(text);
-
-        for (int i = 0; i < (width - text.length()) / 2;)
-        {
-            builder.append(fill);
-            i += fill.length();
-        }
+        append_fill(builder, width, text.length(), fill);
 
         std::cout<< builder<<std::endl;        
     }
@@ -25,24 +25,16 @@ namespace Cli
     void centered_print(std::string text, int width, std::string fill1, std::string fill2)
     {
         std::string builder;
-        for (int i = 0; i < (width - text.length()) / 2;)
-        {
-            builder.append(fill1);
-            i += fill1.length();
-        }
 
+        append_fill(builder, width, text.length(), fill1);
         builder.append(text);
+        append_fill(builder, width, text.length(), fill2);
 
-        for (int i = 0; i < (width - text.length()) / 2;)
-        {
-            builder.append(fill2);
-            i += fill2.length();
-        }
 
         std::cout<<builder<<std::endl;        
     }
 
-    float start()
+    float setprice()
     {
         float credit;
         
@@ -72,7 +64,7 @@ namespace Cli
         int choice;
         
         std::cout<<"Bienvenido/a!"<<std::endl;
-        float credit = start();        
+        float credit = setprice();        
         do
         {   
             
@@ -100,7 +92,7 @@ namespace Cli
                     break;
                 
                 case 2:
-                    credit = start();
+                    credit = setprice();
                     break;
                 
                 case 3:
